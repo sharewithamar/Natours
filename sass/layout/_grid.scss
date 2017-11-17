@@ -1,6 +1,6 @@
 .row{
     max-width:$grid-width;  //standard these days 1140px
-    background-color: #eee;
+   // background-color: #eee;
     margin: 0 auto;
     &:not(:last-child){
         margin-bottom: $gutter-vertical;
@@ -10,7 +10,7 @@
 
     [class^="col-"]{    // ^ - starts with
         // *- contains ; ^ -starts with ; $ -endswith
-        background-color: orangered;
+      //  background-color: orangered;
         float:left;
         &:not(:last-child)
         {
