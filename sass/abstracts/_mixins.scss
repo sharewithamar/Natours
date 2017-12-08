@@ -1,16 +1,67 @@
-@mixin clearfix{
-    &::after{
-        content:"";
-        display: table;
-        clear:both;
-    }
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-@mixin absCenter{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+// MEDIA QUERY MANAGER
 
+/*
+ 0-600px  :   phone
+ 600 -900 : Tablet portrait
+ 900-1200 : Tablet Landscape
+ [1200-1800] is where our normal style apply ( Desktop first approach) 
+ 1800px + : Big Desktop
+
+ @content allows us to pass a block of code in to the mixin
+ @if 
+
+ Media query wont reflect when user increases that'sy we change from px to relative units.
+ em,rem not affected by rootfont size in media query
+ In media query 1em,1rem will always equal to  browser font size (default 16)
+ no matter what you defined as root font size
+
+ em are the best option for media query (rem sometimes breaks in some browsers)
+*/
+
+// @mixin respond-phone {
+//   @media (max-width: 600px) {
+//     @content;
+//   }
+// }
+
+/*
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em=16px (default brower font size)
+*/
+
+
+
+@mixin respond($breakpoint){
+    @if $breakpoint == phone {
+        @media (max-width: 37.5em) {@content};  //600px
+    }
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) {@content};   //900px
+    }
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) {@content};    //1200px
+    }
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) {@content};    //1800px
+    }
 }
