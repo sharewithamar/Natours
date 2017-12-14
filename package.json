@@ -1,7 +1,7 @@
 {
   "name": "natours",
   "version": "1.0.0",
-  "description": "",
+  "description": "Natours App",
   "main": "index.js",
   "scripts": {
     "comp:sass": "node-sass sass/main.scss css/style.css",
